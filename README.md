@@ -26,10 +26,11 @@ Each Harvard Sentence List audio file is evaluated aginst the corresponding Harv
 
 ## Preliminary Results
 
-| Service                            | Source                | Duration   | Accuracy            |
-| ---------------------------------- | -------------------- | ---------- | ------------------- |
-| SpeechRecognition.recognize_google | audiofiles\list1.wav | 11.0310825 | 0.6075949367088608  |
-| google-cloud-speech                | audiofiles\list1.wav | 3.8133511  | 0.08860759493670889 |
+| Service                            | Duration | Accuracy |
+| ---------------------------------- | -------- | -------- |
+| SpeechRecognition.recognize_google | 9.1      | 0.61     |
+| google-cloud-speech                | 3.84     | 0.09     |
+|                                    |
 
 <!-- ### Built With -->
 

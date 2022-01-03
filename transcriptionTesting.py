@@ -69,6 +69,8 @@ for title, transcriptionFunction in transcriptionFunctions.items():
 
 
 # create a dataframe to store results
-df = pd.DataFrame(evaluation_results, columns=['Service', 'Souce', 'Duration', 'Accuracy'])
+df = pd.DataFrame(evaluation_results, columns=['Service', 'Source', 'Duration', 'Accuracy'])
 
 df.to_csv('results.csv', sep=',', index=False)
+
+df.groupby('Service').mean().round(2).to_csv('resultsSummary.csv', sep=',')
