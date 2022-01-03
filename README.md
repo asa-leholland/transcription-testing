@@ -24,6 +24,13 @@ Each Harvard Sentence List audio file is evaluated aginst the corresponding Harv
 * Duration: The time in seconds for the service to perform the transcription.
 * Accuracy: A decimal number calculated using Word Error Rate representing a scale of how accurate the provided audio matched the provided expected transcription. 0.0 represented complete imperfection with no matched words, whereas 1.0 represented complete, perfect transcription with all matching words.
 
+## Preliminary Results
+
+| Service                            | Source                | Duration   | Accuracy            |
+| ---------------------------------- | -------------------- | ---------- | ------------------- |
+| SpeechRecognition.recognize_google | audiofiles\list1.wav | 11.0310825 | 0.6075949367088608  |
+| google-cloud-speech                | audiofiles\list1.wav | 3.8133511  | 0.08860759493670889 |
+
 <!-- ### Built With -->
 
 ## Built With
