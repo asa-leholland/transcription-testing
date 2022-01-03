@@ -49,11 +49,18 @@ pip install -r requirements.txt
 ```
 
 
+<!--  -->
+Harvard sentence transcripts obtained from [here](https://www.cs.columbia.edu/~hgs/audio/harvard.html).
+Harvard sentence .wav files obtained from [here](https://www.voiptroubleshooter.com/open_speech/american.html).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 To use the {project name}, open the command line, navigate to the installation folder and run the following command:
+
+python3 -m venv .venv 
+
+.\.venv\Scripts\activate
 ```sh
 python backstory.py
 ```
