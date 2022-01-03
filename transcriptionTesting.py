@@ -10,6 +10,8 @@ from timeit import default_timer
 
 from pathlib import Path
 
+import pandas as pd
+
 # set this to True to test one audio file (rather than all 20)
 IS_TESTING_ONE = True
 
@@ -39,6 +41,9 @@ if IS_TESTING_ONE:
     sample_data = [sample_data[0]]
 
 
+
+evaluation_results = []
+
 # iterate over each transcription service function
 for title, transcriptionFunction in transcriptionFunctions.items():
 
@@ -60,4 +65,10 @@ for title, transcriptionFunction in transcriptionFunctions.items():
         if IS_TESTING_ONE: 
             print(actualTranscription)
 
-    print(title, duration, accuracy)
+    evaluation_results.append((title, audioPath, duration, accuracy))
+
+
+# create a dataframe to store results
+df = pd.DataFrame(evaluation_results, columns=['Service', 'Souce', 'Duration', 'Accuracy'])
+
+df.to_csv('results.csv', sep=',', index=False)
