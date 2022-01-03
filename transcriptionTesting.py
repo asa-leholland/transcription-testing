@@ -13,7 +13,7 @@ from pathlib import Path
 import pandas as pd
 
 # set this to True to test one audio file (rather than all 20)
-IS_TESTING_ONE = True
+IS_TESTING_ONE = False
 
 transcriptFilePaths = Path('transcriptions').glob('*.txt')
 audioFilePaths = Path('audiofiles').glob('*.wav')
