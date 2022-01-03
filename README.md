@@ -5,17 +5,19 @@ Short template for python projects
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![{example use gif}][example-use]
+<!-- ![{example use gif}][example-use] -->
 
-{description}
+This repository serves as a short demonstration of steps that could be taken to demonstrate the accuracy of a speech recognition service. 
 
-**Note: The {project name} only supports the Windows platform at the moment.**
+**Note: The virtualbox-testing project only supports the Windows platform at the moment.**
 
 
 <!-- ### Built With -->
 
-* [Kivy](https://kivy.org/doc/stable/): a Python framework for developing user interface applications 
 
+* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the (Google API documentation)[https://cloud.google.com/speech-to-text].
+* [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER(https://en.wikipedia.org/wiki/Word_error_rate)]) in provided text 
+* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API) 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -41,7 +43,7 @@ Git is a version control system. In this project, Git is used to clone (copy) th
 
 2. Enter the following command to use Git to clone this repository to your local machine.
 ```sh
-git clone https://github.com/asa-leholland/backstory-shuffleduffler.git
+git clone https://github.com/asa-leholland/virtualbox-testing.git
 ```
 3. Enter the following command to use Pip to install this repository's dependencies.
 ```sh
@@ -56,24 +58,24 @@ Harvard sentence .wav files obtained from [here](https://www.voiptroubleshooter.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To use the {project name}, open the command line, navigate to the installation folder and run the following command:
+To use the {project name}, open the command line, navigate to the installation folder and run the following commands:
 
-python3 -m venv .venv 
 
-.\.venv\Scripts\activate
 ```sh
-python backstory.py
+python3 -m venv .venv 
+.\.venv\Scripts\activate
+python3 transcriptionTesting.py
 ```
 
 <!-- ROADMAP -->
-## Roadmap
+<!-- ## Roadmap
 
-See the [open issues](https://github.com/asa-leholland/{repo-name}/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/asa-leholland/{repo-name}/issues) for a list of proposed features (and known issues). -->
 
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+<!-- ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -82,13 +84,13 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
+ -->
 
 
 <!-- LICENSE -->
-## License
+<!-- ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/asa-leholland/{repo-name}/LICENSE.txt) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/asa-leholland/{repo-name}/LICENSE.txt) for more information. -->
 
 
 
@@ -97,7 +99,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/asa-lehollan
 
 Asa LeHolland - asaleholland@gmail.com
 
-Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/asa-leholland/{repo-name})
+Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/asa-leholland/virtualbox-testing)
 
 
 
@@ -105,11 +107,14 @@ Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/
 ## Acknowledgements
 
 * [othneildrew](https://github.com/othneildrew) for creating the [template README file](https://github.com/othneildrew/Best-README-Template) that was used as the starting point for the README for this project. 
+* [David Amos](https://realpython.com/team/damos/) for his overview article with the Real Python organzition on [speech recognition and the SpeechRecognition package](https://realpython.com/python-speech-recognition/). 
+* [Jie Jenn](https://www.youtube.com/c/JieJenn/about) for his Youtube video introduction to the [Google Cloud Speech-To-Text API](https://www.youtube.com/watch?v=lKra6E_tp5U). 
 
 
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
+
+<!-- MARKDOWN LINKS & IMAGES
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
-[example-use]: images/{filename}.gif
+[example-use]: images/{filename}.gif -->
