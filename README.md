@@ -1,5 +1,5 @@
-# Python Project Template
-Short template for python projects 
+# Transcription Testing
+This repository represents an examination and evaluation of various transcription services and APIs.
 
 
 <!-- ABOUT THE PROJECT -->
@@ -9,14 +9,20 @@ Short template for python projects
 
 This repository serves as a short demonstration of steps that could be taken to demonstrate the accuracy of a speech recognition service. 
 
-**Note: The virtualbox-testing project only supports the Windows platform at the moment.**
+**Note: The Transcription Testing project only supports the Windows platform at the moment.**
 
+
+<!--  -->
+# Sources of Sample Audio
+This project utilizes sample audio generated from a subset of 20 lists taken from [the Harvard Sentences](https://en.wikipedia.org/wiki/Harvard_sentences), a compilation of sample phrases used as a standard for efficacy evaluation of audio-based systems, such as cellular networks. Each list consists of phonetically balanced sentences which consist of specific phoneme (speech component) frequencies matching those that appear in the spoken English language.
+
+Harvard sentence `.wav` audio files were obtained from an open souce library [here](https://www.voiptroubleshooter.com/open_speech/american.html), and the transcripts of those files are taken from Columbia University's Hardvard Sentence documentation  [here](https://www.cs.columbia.edu/~hgs/audio/harvard.html).
 
 <!-- ### Built With -->
 
 
-* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the (Google API documentation)[https://cloud.google.com/speech-to-text].
-* [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER(https://en.wikipedia.org/wiki/Word_error_rate)]) in provided text 
+* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the [Google API documentation](https://cloud.google.com/speech-to-text).
+* [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER](https://en.wikipedia.org/wiki/Word_error_rate)) in provided text 
 * [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API) 
 
 <!-- GETTING STARTED -->
@@ -26,7 +32,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-In order to use the {name}, you must first have Python and pip installed on your system. If you need assistance installing these prerequisites, see the folowing steps:
+In order to use the Transcription Testing project, you must first have Python and pip installed on your system. If you need assistance installing these prerequisites, see the folowing steps:
 * Python is a programming language. All of this project's code base is written in Python. Download the latest version of [Python](https://www.python.org/downloads/) and install onto your local machine.
 
 * Pip is the package installer for Python. Once Python is installed, open your local machine's command line and use the following command to utilize Python to install Pip:
@@ -43,7 +49,7 @@ Git is a version control system. In this project, Git is used to clone (copy) th
 
 2. Enter the following command to use Git to clone this repository to your local machine.
 ```sh
-git clone https://github.com/asa-leholland/virtualbox-testing.git
+git clone https://github.com/asa-leholland/transcription-testing.git
 ```
 3. Enter the following command to use Pip to install this repository's dependencies.
 ```sh
@@ -51,14 +57,12 @@ pip install -r requirements.txt
 ```
 
 
-<!--  -->
-Harvard sentence transcripts obtained from [here](https://www.cs.columbia.edu/~hgs/audio/harvard.html).
-Harvard sentence .wav files obtained from [here](https://www.voiptroubleshooter.com/open_speech/american.html).
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To use the {project name}, open the command line, navigate to the installation folder and run the following commands:
+To run the Transcription Testing project, open the command line, navigate to the installation folder and run the following commands:
 
 
 ```sh
@@ -99,7 +103,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/asa-lehollan
 
 Asa LeHolland - asaleholland@gmail.com
 
-Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/asa-leholland/virtualbox-testing)
+Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/asa-leholland/transcription-testing)
 
 
 
