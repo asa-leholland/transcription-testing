@@ -9,7 +9,7 @@ This repository represents an examination and evaluation of various transcriptio
 
 This repository serves as a short demonstration of steps that could be taken to demonstrate the accuracy of a speech recognition service. 
 
-**Note: The Transcription Testing project only supports the Windows platform at the moment.**
+**Note: The Transcription Testing project only supports the Windows platform at the moment. However, the author intends to perform similiar testing using alternate operating systems using the [Oracle VirtualBox](https://www.virtualbox.org/) tool. **
 
 
 <!--  -->
@@ -33,6 +33,26 @@ The following preliminary results were generated using the average Duration and 
 | SpeechRecognition.recognize_google | 3.09     | 0.99     |
 | google-cloud-speech                | 4.44     | 0.16     |
 |                                    |
+
+## Discussion
+Based on the results of the preliminary analysis, the recognize_google method of the SpeechRecognition library yields both the highest average accuracy and the shortest average duration for transcription processes using the provided audio files. However, it should be noted that the average accuracy result of the google-cloud-speech service is based on the provided audio files alone. In all twenty (20) of the provided audio files, google-cloud-speech stopped transcribing after encountering the pause following the first sentence of each recording. It may be possible to improve the accuracy of the google-cloud-speech by introducing pre-processing using white noise so that the silence does not prematurely cause transcription to end.
+
+There are several additional transcription services that could be examined with similiar testing methodology, including the following:
+* apiai: https://pypi.org/project/apiai/
+* assemblyai: https://pypi.org/project/assemblyai/
+* pocketsphinx: https://pypi.org/project/pocketsphinx/
+* watson-developer-cloud: https://pypi.org/project/watson-developer-cloud/
+* wit: https://pypi.org/project/wit/
+
+
+In addition, the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) library provides additional wrappers for the followiing untested transcription services:
+
+* [CMU Sphinx](https://cmusphinx.github.io/wiki/)
+* [Google Cloud Speech API](https://cloud.google.com/speech-to-text)
+* [Wit.ai](https://wit.ai/)
+* [Microsoft Bing Voice Recognition](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/)
+* [Houndify API](https://www.houndify.com/)
+* [IBM Speech to Text](https://www.ibm.com/thought-leadership/smart/)
 
 <!-- ### Built With -->
 
