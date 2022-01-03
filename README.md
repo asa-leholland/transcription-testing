@@ -28,7 +28,7 @@ Each Harvard Sentence List audio file is evaluated aginst the corresponding Harv
 
 The following preliminary results were generated using the average Duration and Accuracy for twenty (20) audio files using two (2) different transcription services.
 
-| Service                            | Duration | Accuracy |
+| Service                            | Average Duration | Average Accuracy |
 | ---------------------------------- | -------- | -------- |
 | SpeechRecognition.recognize_google | 3.09     | 0.99     |
 | google-cloud-speech                | 4.44     | 0.16     |
