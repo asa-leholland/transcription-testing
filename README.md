@@ -13,17 +13,23 @@ This repository serves as a short demonstration of steps that could be taken to 
 
 
 <!--  -->
-# Sources of Sample Audio
+## Sources of Sample Audio
 This project utilizes sample audio generated from a subset of 20 lists taken from [the Harvard Sentences](https://en.wikipedia.org/wiki/Harvard_sentences), a compilation of sample phrases used as a standard for efficacy evaluation of audio-based systems, such as cellular networks. Each list consists of phonetically balanced sentences which consist of specific phoneme (speech component) frequencies matching those that appear in the spoken English language.
 
-Harvard sentence `.wav` audio files were obtained from an open souce library [here](https://www.voiptroubleshooter.com/open_speech/american.html), and the transcripts of those files are taken from Columbia University's Hardvard Sentence documentation  [here](https://www.cs.columbia.edu/~hgs/audio/harvard.html).
+Harvard sentence `.wav` audio files were obtained from an open souce library [here](https://www.voiptroubleshooter.com/open_speech/american.html), and the `.txt` transcripts of those files are copied from Columbia University's Harvard Sentence documentation [here](https://www.cs.columbia.edu/~hgs/audio/harvard.html).
+
+## Methodology
+
+Each Harvard Sentence List audio file is evaluated aginst the corresponding Harvard Sentence List text file for each speech recognition service examined. For each service, the following information was recorded:
+* Duration: The time in seconds for the service to perform the transcription.
+* Accuracy: A decimal number calculated using Word Error Rate representing a scale of how accurate the provided audio matched the provided expected transcription. 0.0 represented complete imperfection with no matched words, whereas 1.0 represented complete, perfect transcription with all matching words.
 
 <!-- ### Built With -->
 
 
-* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the [Google API documentation](https://cloud.google.com/speech-to-text).
-* [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER](https://en.wikipedia.org/wiki/Word_error_rate)) in provided text 
-* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API) 
+* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the [Google API documentation](https://cloud.google.com/speech-to-text). 
+* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API).
+* [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER](https://en.wikipedia.org/wiki/Word_error_rate)) in provided text.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -103,7 +109,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/asa-lehollan
 
 Asa LeHolland - asaleholland@gmail.com
 
-Project Link: [https://github.com/asa-leholland/{repo-name}](https://github.com/asa-leholland/transcription-testing)
+Project Link: [https://github.com/asa-leholland/transcription-testing](https://github.com/asa-leholland/transcription-testing)
 
 
 
