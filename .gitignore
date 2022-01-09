@@ -1,3 +1,7 @@
+# ignoring local installation of vosk model
+dependencies/vosk-model-en-us-0.22
+dependencies/vosk-model-en-us-0.22.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -32,8 +32,3 @@ def transcribeSRSphinx(pathToAudioFile):
     return r.recognize_sphinx(audioFile)
 
 
-
-
-
-if __name__ == "__main__":
-    print(getHarvardAudioText())

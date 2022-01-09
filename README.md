@@ -2,6 +2,13 @@
 This repository represents an examination and evaluation of various transcription services and APIs.
 
 
+New Notes:
+https://towardsdatascience.com/transcribe-large-audio-files-offline-with-vosk-a77ee8f7aa28
+
+Additional pathways to pursue
+Models: https://catalog.ngc.nvidia.com/orgs/nvidia/models/nemospeechmodels
+shorthand: https://github.com/darinkist/medium_article_vosk/blob/main/NeMo_ASR_example.ipynb
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 

@@ -12,6 +12,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from transcribeVosk import transcribeVosk
+
 # set this to True to test one audio file (rather than all 20)
 IS_TESTING_ONE = True
 IS_TESTING_APIS = False
@@ -20,7 +22,8 @@ transcriptFilePaths = Path('transcriptions').glob('*.txt')
 audioFilePaths = Path('audiofiles').glob('*.wav')
 
 transcriptionFunctions = {
-    "Speech Recognition (CMU Sphinx)": transcribeSRSphinx
+    "Speech Recognition (CMU Sphinx)": transcribeSRSphinx,
+    "VOSK (trained with Daanzu)": transcribeVosk
     }
 
 if IS_TESTING_APIS:
