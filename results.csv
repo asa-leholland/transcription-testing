@@ -1,3 +1,2 @@
 Service,Source,Duration,Accuracy
-SpeechRecognition.recognize_google,audiofiles\list72.wav,3.0943339000000094,0.9863013698630136
-google-cloud-speech,audiofiles\list72.wav,4.443894099999994,0.1643835616438356
+Speech Recognition (CMU Sphinx),audiofiles\list1.wav,10.179376,0.17721518987341767

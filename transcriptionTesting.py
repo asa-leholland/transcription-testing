@@ -1,4 +1,4 @@
-from transcribeSR import getHarvardAudioText
+from transcribeSR import transcribeSRGoogleCloudSpeech, transcribeSRSphinx
 
 from transcribeGCSTT import processAudioinfileGCSTT
 
@@ -13,17 +13,23 @@ from pathlib import Path
 import pandas as pd
 
 # set this to True to test one audio file (rather than all 20)
-IS_TESTING_ONE = False
+IS_TESTING_ONE = True
+IS_TESTING_APIS = False
 
 transcriptFilePaths = Path('transcriptions').glob('*.txt')
 audioFilePaths = Path('audiofiles').glob('*.wav')
 
 transcriptionFunctions = {
-    "SpeechRecognition.recognize_google": getHarvardAudioText,
-    "google-cloud-speech": processAudioinfileGCSTT
+    "Speech Recognition (CMU Sphinx)": transcribeSRSphinx
     }
 
-
+if IS_TESTING_APIS:
+    additional_services = [
+        ("Speech Recognition (GoogleSpeech to Text)", transcribeSRGoogleCloudSpeech),
+        ("google-cloud-speech", processAudioinfileGCSTT)
+        ]
+    for (serviceTitle, serviceFunction) in additional_services:
+        transcriptionFunctions[serviceTitle] = serviceFunction
 
 # create testing list of lists using audio files and transcriptions
 sample_data = []
@@ -69,8 +75,9 @@ for title, transcriptionFunction in transcriptionFunctions.items():
 
 
 # create a dataframe to store results
-df = pd.DataFrame(evaluation_results, columns=['Service', 'Source', 'Duration', 'Accuracy'])
+results_df = pd.DataFrame(evaluation_results, columns=['Service', 'Source', 'Duration', 'Accuracy'])
+results_df.to_csv('results.csv', sep=',', index=False)
 
-df.to_csv('results.csv', sep=',', index=False)
-
-df.groupby('Service').mean().round(2).to_csv('resultsSummary.csv', sep=',')
+summary_df = results_df.groupby('Service').mean().round(2)
+print('/n', summary_df)
+summary_df.to_csv('resultsSummary.csv', sep=',')

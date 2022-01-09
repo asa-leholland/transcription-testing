@@ -1,3 +1,2 @@
 Service,Duration,Accuracy
-SpeechRecognition.recognize_google,3.09,0.99
-google-cloud-speech,4.44,0.16
+Speech Recognition (CMU Sphinx),10.18,0.18
