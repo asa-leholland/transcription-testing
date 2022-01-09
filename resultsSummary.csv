@@ -1,3 +1,3 @@
 Service,Duration,Accuracy
-Speech Recognition (CMU Sphinx),12.59,0.18
-VOSK (trained with Daanzu),14.28,0.82
+Speech Recognition (CMU Sphinx),13.87,0.18
+VOSK (trained with Daanzu),15.7,0.82

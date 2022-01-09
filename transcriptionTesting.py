@@ -15,7 +15,7 @@ import pandas as pd
 from transcribeVosk import transcribeVosk
 
 # set this to True to test one audio file (rather than all 20)
-IS_TESTING_ONE = True
+IS_TESTING_ONE = False
 IS_TESTING_APIS = False
 
 transcriptFilePaths = Path('transcriptions').glob('*.txt')
@@ -23,7 +23,7 @@ audioFilePaths = Path('audiofiles').glob('*.wav')
 
 transcriptionFunctions = {
     "Speech Recognition (CMU Sphinx)": transcribeSRSphinx,
-    "VOSK (trained with Daanzu)": transcribeVosk
+    "VOSK (trained with Generic Eng. Model)": transcribeVosk
     }
 
 if IS_TESTING_APIS:
@@ -82,5 +82,5 @@ results_df = pd.DataFrame(evaluation_results, columns=['Service', 'Source', 'Dur
 results_df.to_csv('results.csv', sep=',', index=False)
 
 summary_df = results_df.groupby('Service').mean().round(2)
-print('/n', summary_df)
+print('\n', summary_df)
 summary_df.to_csv('resultsSummary.csv', sep=',')
