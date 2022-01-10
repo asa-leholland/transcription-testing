@@ -24,11 +24,11 @@ Each Harvard Sentence List audio file is evaluated aginst the corresponding Harv
 * Duration: The time in seconds for the service to perform the transcription.
 * Accuracy: A decimal number calculated using Word Error Rate representing a scale of how accurate the provided audio matched the provided expected transcription. 0.0 represented complete imperfection with no matched words, whereas 1.0 represented complete, perfect transcription with all matching words.
 
-## Preliminary Results (COffline)
+## Preliminary Results (Offline)
 
 The following preliminary results were generated without an internet connection using the average Duration and Accuracy for twenty (20) audio files using two (2) different transcription services.
 
-| Service                                | Duration | Accuracy |
+| Service                                | Average Duration (seconds) | Average Accuracy |
 | -------------------------------------- | -------- | -------- |
 | Speech Recognition (CMU Sphinx)        | 5.84     | 0.81     |
 | VOSK (trained with Generic Eng. Model) | 8.89     | 0.96     |
@@ -37,13 +37,15 @@ The following preliminary results were generated without an internet connection 
 
 
 ## Discussion
-Based on the results of the preliminary analysis, the CMU Sphinx wrapper of the SpeechRecognition library yields the quickest transcription results, but was not as accurate with the provided audio files. In contrast, the VOSK library took slightly longer to transcribe each file, but resulted in a higher accuracy. However, it should be noted that the VOSK library relies on training with a NLP model, which causes two additional complications:
+Based on the results of the preliminary analysis, the CMU Sphinx wrapper of the SpeechRecognition library yields the quickest transcription results, but could be more accurate based on the provided audio files. In contrast, the VOSK library took slightly longer to transcribe each file, but resulted in a higher accuracy. However, it should be noted that the VOSK library relies on training with a NLP model, which causes two additional complications:
 * The model must be downloaded and stored. For the purposes of this testing, the zipped download file was ~1.8Gb and the resulting unzipped files are ~2.7Gb, but more portable model options remain untested.
-* The provided durations do not factor in time taken to perform initial training of the model upon setup of the VOSK service. Setup times ranged from 27 to 35 seconds. This time delay may be avoidable if a compression process could be used (similiar to python's pickle module, which unfortunately does not work with VOSK's C-based models).
+* The provided durations do not factor in time taken to perform initial training of the model upon setup of the VOSK service. Setup times ranged from 27 to 35 seconds. This time delay may be avoidable if a compression process could be used (similiar to python's [pickle](https://docs.python.org/3/library/pickle.html#module-pickle) module, which unfortunately does not work with VOSK's C-based models).
 
 There are a few additional untested transcription services that could be examined with similiar testing methodology, including the following:
 * NeMo: https://github.com/darinkist/medium_article_vosk/blob/main/NeMo_ASR_example.ipynb which can be trained with models created by [Nvidia here](https://catalog.ngc.nvidia.com/orgs/nvidia/models/nemospeechmodels)
 * SnowBoy: https://github.com/Kitt-AI/snowboy (no longer maintained, but is also wrapped in the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) library)
+
+In addition, the author attempted to test the [pocketsphinx](https://pypi.org/project/pocketsphinx/) library, but ran into implementation issues. `pocketsphinx` cannot run on versions of Python beyond 3.6 and also relies on [swig for windows](http://www.swig.org/download.html), which was not able to easily installed on the testing environment without [anaconda](https://www.anaconda.com/), establishing a virtual environment with unique PATH variables, and supplying Admin permissions to the install [Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/getting-started/). `pocketsphinx` could easily be used to record live audio from a microphne (as detailed [here](https://github.com/bambocher/pocketsphinx-python#livespeech) and [here](http://blog.justsophie.com/python-speech-to-text-with-pocketsphinx/)), but finding methods of analyzing fully transcribed audio files was not identified in the documentation. At that point, this library was put aside in favor of altenatives with easier integration.
 
 
 
@@ -145,7 +147,6 @@ Based on the results of the preliminary analysis, the recognize_google method of
 There are several additional transcription services that could be examined with similiar testing methodology, including the following:
 * apiai: https://pypi.org/project/apiai/
 * assemblyai: https://pypi.org/project/assemblyai/
-* pocketsphinx: https://pypi.org/project/pocketsphinx/
 * watson-developer-cloud: https://pypi.org/project/watson-developer-cloud/
 * wit: https://pypi.org/project/wit/
 
