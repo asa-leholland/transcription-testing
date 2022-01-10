@@ -2,13 +2,6 @@
 This repository represents an examination and evaluation of various transcription services and APIs.
 
 
-New Notes:
-https://towardsdatascience.com/transcribe-large-audio-files-offline-with-vosk-a77ee8f7aa28
-
-Additional pathways to pursue
-Models: https://catalog.ngc.nvidia.com/orgs/nvidia/models/nemospeechmodels
-shorthand: https://github.com/darinkist/medium_article_vosk/blob/main/NeMo_ASR_example.ipynb
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -31,41 +24,34 @@ Each Harvard Sentence List audio file is evaluated aginst the corresponding Harv
 * Duration: The time in seconds for the service to perform the transcription.
 * Accuracy: A decimal number calculated using Word Error Rate representing a scale of how accurate the provided audio matched the provided expected transcription. 0.0 represented complete imperfection with no matched words, whereas 1.0 represented complete, perfect transcription with all matching words.
 
-## Preliminary Results
+## Preliminary Results (COffline)
 
-The following preliminary results were generated using the average Duration and Accuracy for twenty (20) audio files using two (2) different transcription services.
+The following preliminary results were generated without an internet connection using the average Duration and Accuracy for twenty (20) audio files using two (2) different transcription services.
 
-| Service                            | Average Duration | Average Accuracy |
-| ---------------------------------- | -------- | -------- |
-| SpeechRecognition.recognize_google | 3.09     | 0.99     |
-| google-cloud-speech                | 4.44     | 0.16     |
-|                                    |
+| Service                                | Duration | Accuracy |
+| -------------------------------------- | -------- | -------- |
+| Speech Recognition (CMU Sphinx)        | 5.84     | 0.81     |
+| VOSK (trained with Generic Eng. Model) | 8.89     | 0.96     |
+|                                        |
+
+
 
 ## Discussion
-Based on the results of the preliminary analysis, the recognize_google method of the SpeechRecognition library yields both the highest average accuracy and the shortest average duration for transcription processes using the provided audio files. However, it should be noted that the average accuracy result of the google-cloud-speech service is based on the provided audio files alone. In all twenty (20) of the provided audio files, google-cloud-speech stopped transcribing after encountering the pause following the first sentence of each recording. It may be possible to improve the accuracy of the google-cloud-speech by introducing pre-processing using white noise so that the silence does not prematurely cause transcription to end.
+Based on the results of the preliminary analysis, the CMU Sphinx wrapper of the SpeechRecognition library yields the quickest transcription results, but was not as accurate with the provided audio files. In contrast, the VOSK library took slightly longer to transcribe each file, but resulted in a higher accuracy. However, it should be noted that the VOSK library relies on training with a NLP model, which causes two additional complications:
+* The model must be downloaded and stored. For the purposes of this testing, the zipped download file was ~1.8Gb and the resulting unzipped files are ~2.7Gb, but more portable model options remain untested.
+* The provided durations do not factor in time taken to perform initial training of the model upon setup of the VOSK service. Setup times ranged from 27 to 35 seconds. This time delay may be avoidable if a compression process could be used (similiar to python's pickle module, which unfortunately does not work with VOSK's C-based models).
 
-There are several additional transcription services that could be examined with similiar testing methodology, including the following:
-* apiai: https://pypi.org/project/apiai/
-* assemblyai: https://pypi.org/project/assemblyai/
-* pocketsphinx: https://pypi.org/project/pocketsphinx/
-* watson-developer-cloud: https://pypi.org/project/watson-developer-cloud/
-* wit: https://pypi.org/project/wit/
+There are a few additional untested transcription services that could be examined with similiar testing methodology, including the following:
+* NeMo: https://github.com/darinkist/medium_article_vosk/blob/main/NeMo_ASR_example.ipynb which can be trained with models created by [Nvidia here](https://catalog.ngc.nvidia.com/orgs/nvidia/models/nemospeechmodels)
+* SnowBoy: https://github.com/Kitt-AI/snowboy (no longer maintained, but is also wrapped in the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) library)
 
 
-In addition, the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) library provides additional wrappers for the followiing untested transcription services:
-
-* [CMU Sphinx](https://cmusphinx.github.io/wiki/)
-* [Google Cloud Speech API](https://cloud.google.com/speech-to-text)
-* [Wit.ai](https://wit.ai/)
-* [Microsoft Bing Voice Recognition](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/)
-* [Houndify API](https://www.houndify.com/)
-* [IBM Speech to Text](https://www.ibm.com/thought-leadership/smart/)
 
 <!-- ### Built With -->
 
 ## Built With
-* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the [Google API documentation](https://cloud.google.com/speech-to-text). 
-* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API).
+* [VOSK](https://pypi.org/project/vosk/): a Python library for offline conversion of audio to text using natural language processing.
+* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the PocketSphinx aka CMU Sphinx functionality).
 * [JiWER](https://pypi.org/project/jiwer/): a Python library for evaluating Word Error Rate ([WER](https://en.wikipedia.org/wiki/Word_error_rate)) in provided text.
 
 <!-- GETTING STARTED -->
@@ -98,7 +84,7 @@ git clone https://github.com/asa-leholland/transcription-testing.git
 ```sh
 pip install -r requirements.txt
 ```
-
+4. To use the VOSK library, you must also download an audio dataset to train the NLP model. The author used `vosk-model-en-us-0.22.zip` available [here](https://alphacephei.com/vosk/models). This was extracted into a `\dependencies` folder in the root directory of this project.
 
 
 
@@ -140,6 +126,43 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See [LICENSE](https://github.com/asa-leholland/{repo-name}/LICENSE.txt) for more information. -->
 
 
+# Additional Testing
+Initially, a few additional services were examined, but since they required internet connection access to the APIs, further analysis was not performed. Following are the results of this additional testing. 
+
+## Preliminary Results (Connection Required)
+
+The following preliminary results were generated using the average Duration and Accuracy for twenty (20) audio files using two (2) different transcription services.
+
+| Service                            | Average Duration | Average Accuracy |
+| ---------------------------------- | -------- | -------- |
+| SpeechRecognition.recognize_google | 3.09     | 0.99     |
+| google-cloud-speech                | 4.44     | 0.16     |
+|                                    |
+
+## Discussion of Additional Results
+Based on the results of the preliminary analysis, the recognize_google method of the SpeechRecognition library yields both the highest average accuracy and the shortest average duration for transcription processes using the provided audio files. However, it should be noted that the average accuracy result of the google-cloud-speech service is based on the provided audio files alone. In all twenty (20) of the provided audio files, google-cloud-speech stopped transcribing after encountering the pause following the first sentence of each recording. It may be possible to improve the accuracy of the google-cloud-speech by introducing pre-processing using white noise so that the silence does not prematurely cause transcription to end.
+
+There are several additional transcription services that could be examined with similiar testing methodology, including the following:
+* apiai: https://pypi.org/project/apiai/
+* assemblyai: https://pypi.org/project/assemblyai/
+* pocketsphinx: https://pypi.org/project/pocketsphinx/
+* watson-developer-cloud: https://pypi.org/project/watson-developer-cloud/
+* wit: https://pypi.org/project/wit/
+
+
+In addition, the [SpeechRecognition](https://pypi.org/project/SpeechRecognition/) library provides additional wrappers for the followiing untested transcription services:
+
+* [Google Cloud Speech API](https://cloud.google.com/speech-to-text)
+* [Wit.ai](https://wit.ai/)
+* [Microsoft Bing Voice Recognition](https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/)
+* [Houndify API](https://www.houndify.com/)
+* [IBM Speech to Text](https://www.ibm.com/thought-leadership/smart/)
+
+<!-- ### Built With -->
+
+## Additional Testing was Built With
+* [Google Cloud Speech-to-Text](https://pypi.org/project/google-cloud-speech/): a Python library for converting audio to text using neural network models. More details can be found on the [Google API documentation](https://cloud.google.com/speech-to-text). 
+* [SpeechRecognition](https://pypi.org/project/SpeechRecognition/): a Python library for performing speech recogntion (in particular, the Google Cloud Speech API).
 
 <!-- CONTACT -->
 ## Contact
@@ -155,6 +178,8 @@ Project Link: [https://github.com/asa-leholland/transcription-testing](https://g
 
 * [othneildrew](https://github.com/othneildrew) for creating the [template README file](https://github.com/othneildrew/Best-README-Template) that was used as the starting point for the README for this project. 
 * [David Amos](https://realpython.com/team/damos/) for his overview article with the Real Python organzition on [speech recognition and the SpeechRecognition package](https://realpython.com/python-speech-recognition/). 
+* [Konstantin Rink](https://konstantin-rink.medium.com/) for [his tutorial on Real Data Science](https://towardsdatascience.com/transcribe-large-audio-files-offline-with-vosk-a77ee8f7aa28) on how to use the VOSK toolset.
+* [AlphaCephei](https://alphacephei.com/) for providing OpenSource [audio model datasets](https://alphacephei.com/vosk/models) used to train VOSK.
 * [Jie Jenn](https://www.youtube.com/c/JieJenn/about) for his Youtube video introduction to the [Google Cloud Speech-To-Text API](https://www.youtube.com/watch?v=lKra6E_tp5U). 
 
 
